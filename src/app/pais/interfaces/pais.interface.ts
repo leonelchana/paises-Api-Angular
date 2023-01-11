@@ -33,7 +33,6 @@ export interface Country {
     coatOfArms:   CoatOfArms;
     startOfWeek:  string;
     capitalInfo:  CapitalInfo;
-    postalCode:   PostalCode;
 }
 
 export interface CapitalInfo {
@@ -51,10 +50,10 @@ export interface CoatOfArms {
 }
 
 export interface Currencies {
-    CRC: CRC;
+    BOB: Bob;
 }
 
-export interface CRC {
+export interface Bob {
     name:   string;
     symbol: string;
 }
@@ -79,6 +78,9 @@ export interface Idd {
 }
 
 export interface Languages {
+    aym: string;
+    grn: string;
+    que: string;
     spa: string;
 }
 
@@ -94,15 +96,13 @@ export interface Name {
 }
 
 export interface NativeName {
+    aym: Translation;
+    grn: Translation;
+    que: Translation;
     spa: Translation;
 }
 
 export interface Translation {
     official: string;
     common:   string;
-}
-
-export interface PostalCode {
-    format: string;
-    regex:  string;
 }

@@ -13,9 +13,9 @@ export class PorPaisComponent {
   paises:Country[]=[];
   constructor(private paisService: PaisService) {}
 
-  buscar() {
+  buscar(termino:string) {
     this.hayError = false;
-    console.log(this.termino);
+    this.termino=termino;
     this.paisService.buscarPais(this.termino).subscribe(
       (paises) => {
         console.log(paises);
@@ -28,5 +28,22 @@ export class PorPaisComponent {
         this.paises=[];
       }
     );
+  }
+  sugerencias(termino:string){
+    this.hayError=false;
+    this.termino=termino;
+    this.paisService.buscarPais(this.termino).subscribe(
+      (paises) => {
+        console.log(paises);
+        this.paises=paises;
+      },
+      (err) => {
+        console.log('ERRor');
+        
+        this.hayError = true;
+        this.paises=[];
+      }
+    );    
+
   }
 }
