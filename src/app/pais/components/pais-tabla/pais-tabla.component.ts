@@ -5,6 +5,12 @@ import { PaisService } from '../../services/pais.service';
 @Component({
   selector: 'app-pais-tabla',
   templateUrl: './pais-tabla.component.html',
+  styles: [`
+.bo{
+  background:white;
+}
+  `
+  ]
 })
 export class PaisTablaComponent {
 

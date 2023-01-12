@@ -1,20 +1,30 @@
-<h2>Por Region</h2>
-<hr />
+<div class="animate__animated animate__fadeIn animate__faster">
+
+<h3>Buscar por Region <small> {{regionActiva|titlecase}} </small></h3>
+<hr></div>
+<h5>Seleccionar Region</h5>
 <div class="row">
   <div class="col">
-   <app-pais-input
-   (onEnter)="buscar($event)"
-   (onDebounce)="sugerencias($event)"
-   placeholder="Buscar Region..."
-   ></app-pais-input>
+    <!--   [class.btn-primary]="region===regionActiva"
+.................
+      [ngClass]="{
+        'btn-primary':regionActiva==region,
+        'btn-ouline-primary':regionActiva!==region}"
+    /...............
+    
+    -->
+    <button *ngFor="let region of regiones"
+      class="btn btn-ouline-primary"
+      (click)="activarRegion(region)"
+      [class]="getClaseCSS(region)"
+      >
+      {{region|titlecase}}
+
+    </button>
   </div>
 </div>
-<hr />
-<div *ngIf="hayError" class="alert alert-danger">
-  No se encontro nada con el termino {{ this.termino }}
-</div>
-<div *ngIf="!hayError" class="row">
+<div *ngIf="paises.length>0" class="row">
   <div class="col">
-    <app-pais-tabla [paises]="paises" ></app-pais-tabla>
-  </div>
+     <app-pais-tabla [paises]="paises" ></app-pais-tabla>
+   </div>
 </div>
